@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY content "http://www.w3.org/2011/content#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY socialdata "http://data.opendiscoveryspace.eu/socialdata.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://data.opendiscoveryspace.eu/socialdata.owl#"
+     xml:base="http://data.opendiscoveryspace.eu/terms/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:content="http://www.w3.org/2011/content#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:socialdata="http://data.opendiscoveryspace.eu/socialdata.owl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;type"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;identifier"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#hasComment -->
+
+    <owl:ObjectProperty rdf:about="&socialdata;hasComment">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;hasComment"/>
+                <owl:someValuesFrom rdf:resource="&socialdata;LearningObject"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;hasComment"/>
+                <owl:someValuesFrom rdf:resource="&socialdata;Comment"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#hasRating -->
+
+    <owl:ObjectProperty rdf:about="&socialdata;hasRating">
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;hasRating"/>
+                <owl:someValuesFrom rdf:resource="&socialdata;Rate"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;hasRating"/>
+                <owl:someValuesFrom rdf:resource="&socialdata;LearningObject"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#hasSharing -->
+
+    <owl:ObjectProperty rdf:about="&socialdata;hasSharing">
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;hasSharing"/>
+                <owl:someValuesFrom rdf:resource="&socialdata;Share"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;hasRating"/>
+                <owl:someValuesFrom rdf:resource="&socialdata;LearningObject"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#media -->
+
+    <owl:DatatypeProperty rdf:about="&socialdata;media">
+        <rdfs:domain rdf:resource="&socialdata;Share"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#ratingValue -->
+
+    <owl:DatatypeProperty rdf:about="&socialdata;ratingValue">
+        <rdfs:domain rdf:resource="&socialdata;Rate"/>
+        <rdfs:range>
+            <rdf:Description>
+                <rdf:type rdf:resource="&owl;DataRange"/>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first rdf:datatype="&xsd;integer">0</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first rdf:datatype="&xsd;integer">100</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&rdf;List"/>
+                                        <rdf:first rdf:datatype="&xsd;integer">25</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&rdf;List"/>
+                                                <rdf:first rdf:datatype="&xsd;integer">50</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&rdf;List"/>
+                                                        <rdf:first rdf:datatype="&xsd;integer">75</rdf:first>
+                                                        <rdf:rest rdf:resource="&rdf;nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdf:Description>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#tag -->
+
+    <owl:DatatypeProperty rdf:about="&socialdata;tag">
+        <rdfs:domain rdf:resource="&socialdata;LearningObject"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!--http://www.w3.org/2011/content#commentBody -->
+
+    <owl:DatatypeProperty rdf:about="&content;commentBody">
+        <rdfs:domain rdf:resource="&socialdata;Comment"/>
+        <rdfs:subPropertyOf rdf:resource="&content;chars"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2011/content#chars -->
+
+    <owl:DatatypeProperty rdf:about="&content;chars">
+        <rdfs:domain rdf:resource="&content;BodyAsText"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#Comment -->
+
+    <owl:Class rdf:about="&socialdata;Comment">
+        <rdfs:subClassOf rdf:resource="&content;BodyAsText"/>
+        <dc:date rdf:datatype="&xsd;date"></dc:date>
+        <dc:identifier rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:identifier>
+        <dc:publisher rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:publisher>
+    </owl:Class>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#LearningObject -->
+
+    <owl:Class rdf:about="&socialdata;LearningObject">
+        <dc:identifier rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:identifier>
+        <rdfs:comment
+            >a Learning Object</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#Rate -->
+
+    <owl:Class rdf:about="&socialdata;Rate">
+        <dc:type rdf:datatype="&rdfs;Literal"></dc:type>
+        <dc:date rdf:datatype="&xsd;dateTime"></dc:date>
+        <dc:creator rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:creator>
+        <dc:identifier rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:identifier>
+    </owl:Class>
+    
+
+
+    <!-- http://data.opendiscoveryspace.eu/socialdata.owl#Share -->
+
+    <owl:Class rdf:about="&socialdata;Share">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&socialdata;media"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:date rdf:datatype="&xsd;dateTime"></dc:date>
+        <dc:publisher rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:publisher>
+        <dc:identifier rdf:datatype="&xsd;anyURI"
+            >http://data.opendiscoveryspace.eu/socialdata.owl#</dc:identifier>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2011/content#BodyAsText -->
+
+    <owl:Class rdf:about="&content;BodyAsText"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+
